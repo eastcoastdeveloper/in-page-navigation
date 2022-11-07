@@ -1,0 +1,32 @@
+<header>
+  <div class="fat-arrow">
+    <span>( ) =</span>
+    <span class="caret">&#62;</span>
+  </div>
+  <a href="https://frontenddevelopment.tech/" target="_blank"
+    >frontenddevelopment.tech</a
+  >
+</header>
+
+<div id="module-name">
+  <section>
+    <div id="s1" #s1>Section 1</div>
+  </section>
+  <section>
+    <div id="s2" #s2>Section 2</div>
+  </section>
+  <section>
+    <div id="s3" #s3>Section 3</div>
+  </section>
+  <div id="indicator" #bar></div>
+  <div id="percent">
+    <div>33%</div>
+    <div>66%</div>
+    <div>100%</div>
+  </div>
+  <div class="btn-group" (mouseover)="whereYouAt()" (mouseout)="revert()">
+    <button (click)="navigate(s1)">Section 1</button>
+    <button (click)="navigate(s2)">Section 2</button>
+    <button (click)="navigate(s3)">Section 3</button>
+  </div>
+</div>
