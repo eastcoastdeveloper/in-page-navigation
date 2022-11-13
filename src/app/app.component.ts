@@ -18,7 +18,7 @@ export class AppComponent {
   @ViewChild('bar', { static: false }) bar: ElementRef;
 
   // SET TO ANY AMOUNT!
-  sectionLength = 3;
+  sectionLength = 4;
 
   barLinkWidth = 0;
   currentSection = 0;
