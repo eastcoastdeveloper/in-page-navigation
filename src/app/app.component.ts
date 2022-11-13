@@ -1,9 +1,17 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   @ViewChild('s1', { static: false }) s1: ElementRef;
@@ -15,16 +23,18 @@ export class AppComponent {
   pages: any = [];
   barLinkWidth: number = 0;
 
-  constructor() {}
+  constructor(private _elements: ElementRef) {}
 
   ngAfterViewInit() {
+    let elems = Array.from(this._elements.nativeElement.querySelectorAll('section'));
+    console.log(elems);
     this.progress = Array.prototype.slice.call(
       document.querySelectorAll('#percent > div')
     );
     this.pages = [
       this.s1.nativeElement,
       this.s2.nativeElement,
-      this.s3.nativeElement
+      this.s3.nativeElement,
     ];
     this.barLinkWidth = 100 / this.pages.length;
     this.bar.nativeElement.setAttribute(
