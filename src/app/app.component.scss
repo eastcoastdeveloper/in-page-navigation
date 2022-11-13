@@ -27,20 +27,15 @@ body {
       left: 0;
     }
   }
-  section:not(:first-child) {
-    div {
-      display: none;
-    }
-  }
 }
 
 .display-none {
   display: none;
 }
 
-.show-page {
-  display: block !important;
-}
+// .show-page {
+//   display: block !important;
+// }
 
 .btn-group {
   position: absolute;
