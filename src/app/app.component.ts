@@ -18,15 +18,14 @@ export class AppComponent {
   @ViewChild('bar', { static: false }) bar: ElementRef;
 
   // SET TO ANY AMOUNT!
-  sectionLength = 3;
-  
-  barLinkWidth: number = 0;
+  sectionLength = 4;
+
+  barLinkWidth = 0;
+  currentSection = 0;
   progress: any = [];
   Math: any;
 
-  constructor(
-    private _cd: ChangeDetectorRef,
-  ) {
+  constructor(private _cd: ChangeDetectorRef) {
     this.Math = Math;
   }
 
@@ -45,11 +44,11 @@ export class AppComponent {
   }
 
   navigate(sectionIndex: number) {
+    this.currentSection = sectionIndex;
     let arr = Array.from(this.sections);
     arr.forEach(() => {
       arr[sectionIndex].nativeElement.classList.remove('show-page');
     });
-    // arr[sectionIndex].nativeElement.classList.add('displayNone');
     arr[sectionIndex].nativeElement.classList.add('show-page');
     this.bar.nativeElement.style.width =
       this.barLinkWidth * (sectionIndex + 1) + '%';

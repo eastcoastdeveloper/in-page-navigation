@@ -9,8 +9,12 @@
 </header>
 
 <div id="module-name">
-  <section *ngFor="let item of [].constructor(sectionLength); let i = index">
-    <div #sections>{{ 'Section ' + (i + 1) }}</div>
+  <section
+  *ngFor="let item of [].constructor(sectionLength); let i = index"
+  [ngClass]="{'display-none': currentSection != i}" >
+    <div #sections>
+      {{ 'Section ' + (i + 1) }}
+    </div>
   </section>
   <div id="indicator" #bar></div>
   <div id="percent">
