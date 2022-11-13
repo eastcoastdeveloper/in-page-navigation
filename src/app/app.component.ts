@@ -18,7 +18,7 @@ export class AppComponent {
   @ViewChild('bar', { static: false }) bar: ElementRef;
 
   // SET TO ANY AMOUNT!
-  sectionLength = 4;
+  sectionLength = 3;
 
   barLinkWidth = 0;
   currentSection = 0;
@@ -45,11 +45,6 @@ export class AppComponent {
 
   navigate(sectionIndex: number) {
     this.currentSection = sectionIndex;
-    let arr = Array.from(this.sections);
-    // arr.forEach(() => {
-    //   arr[sectionIndex].nativeElement.classList.remove('show-page');
-    // });
-    // arr[sectionIndex].nativeElement.classList.add('show-page');
     this.bar.nativeElement.style.width =
       this.barLinkWidth * (sectionIndex + 1) + '%';
   }
