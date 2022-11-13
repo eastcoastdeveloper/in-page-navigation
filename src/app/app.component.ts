@@ -20,7 +20,7 @@ export class AppComponent {
   progress: any = [];
 
   // SET TO ANY AMOUNT!
-  sectionLength = 5;
+  sectionLength = 3;
   
   barLinkWidth: number = 0;
   Math: any;
