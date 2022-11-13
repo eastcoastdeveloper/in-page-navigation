@@ -46,10 +46,10 @@ export class AppComponent {
 
   navigate(sectionIndex: number) {
     let arr = Array.from(this.sections);
-    arr.forEach((val, i) => {
+    arr.forEach(() => {
       arr[sectionIndex].nativeElement.classList.remove('show-page');
     });
-    arr[0].nativeElement.classList.add('displayNone');
+    // arr[sectionIndex].nativeElement.classList.add('displayNone');
     arr[sectionIndex].nativeElement.classList.add('show-page');
     this.bar.nativeElement.style.width =
       this.barLinkWidth * (sectionIndex + 1) + '%';
