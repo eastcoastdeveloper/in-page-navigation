@@ -1,4 +1,5 @@
 import {
+    ChangeDetectorRef,
   Component,
   ElementRef,
   QueryList,
@@ -20,13 +21,13 @@ export class AppComponent {
   pages: any = [];
   barLinkWidth: number = 0;
 
-  constructor(private _elements: ElementRef) {}
+  constructor(private _elements: ElementRef, private _cd: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
+    this._cd.detectChanges();
     this.sections.forEach((val) => {
       console.log(val.nativeElement)
     })
-    // this.elems = Array.from(this._elements.nativeElement.querySelectorAll('section > div'));
     this.progress = Array.prototype.slice.call(
       document.querySelectorAll('#percent > div')
     );
@@ -44,7 +45,7 @@ export class AppComponent {
     })
     arr[0].nativeElement.classList.add('displayNone');
     arr[sectionIndex].nativeElement.classList.add('show-page');
-    this.bar.nativeElement.style.width = this.barLinkWidth * arr[sectionIndex].nativeElement.getAttribute('id').slice(1) + '%'
+    this.bar.nativeElement.style.width = this.barLinkWidth * (sectionIndex + 1) + '%'
   }
 
   whereYouAt() {

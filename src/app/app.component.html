@@ -9,14 +9,8 @@
 </header>
 
 <div id="module-name">
-  <section>
-    <div #sections>Section 1</div>
-  </section>
-  <section>
-    <div #sections>Section 2</div>
-  </section>
-  <section>
-    <div #sections>Section 3</div>
+  <section *ngFor="let item of sections; let i = index">
+    <div #sections>{{'Section' + i}}</div>
   </section>
   <div id="indicator" #bar></div>
   <div id="percent">
