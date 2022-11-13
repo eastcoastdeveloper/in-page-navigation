@@ -1,11 +1,8 @@
-import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  Inject,
   QueryList,
-  Renderer2,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
@@ -26,10 +23,7 @@ export class AppComponent {
   Math: any;
 
   constructor(
-    private _elements: ElementRef,
     private _cd: ChangeDetectorRef,
-    private _renderer: Renderer2,
-    @Inject(DOCUMENT) private _document: Document
   ) {
     this.Math = Math;
   }
@@ -44,11 +38,8 @@ export class AppComponent {
       'style',
       'width:' + this.barLinkWidth + '%'
     );
-    this._renderer.setStyle(
-      this.btnGroup.nativeElement,
-      'grid-template-columns',
-      this.sectionLength
-    );
+    this.btnGroup.nativeElement.style.gridTemplateColumns =
+      'repeat(' + this.sectionLength + ', auto)';
   }
 
   navigate(sectionIndex: number) {
