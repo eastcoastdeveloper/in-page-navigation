@@ -9,18 +9,21 @@
 </header>
 
 <div id="module-name">
-  <section *ngFor="let item of sections; let i = index">
-    <div #sections>{{'Section' + i}}</div>
+  <section *ngFor="let item of [].constructor(sectionLength); let i = index">
+    <div #sections>{{ 'Section ' + (i + 1) }}</div>
   </section>
   <div id="indicator" #bar></div>
   <div id="percent">
-    <div>33%</div>
-    <div>66%</div>
-    <div>100%</div>
+    <div *ngFor="let percent of [].constructor(sectionLength); let i = index">
+      {{ Math.round((i + 1) * 33.33333) + '%' }}
+    </div>
   </div>
   <div class="btn-group" (mouseover)="whereYouAt()" (mouseout)="revert()">
-    <button (click)="navigate(0)">Section 1</button>
-    <button (click)="navigate(1)">Section 2</button>
-    <button (click)="navigate(2)">Section 3</button>
+    <button
+      *ngFor="let btn of [].constructor(sectionLength); let i = index"
+      (click)="navigate(i + 1)"
+    >
+      {{ 'Section ' + (i + 1) }}
+    </button>
   </div>
 </div>

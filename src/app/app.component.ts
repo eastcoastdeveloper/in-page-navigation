@@ -1,5 +1,5 @@
 import {
-    ChangeDetectorRef,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   QueryList,
@@ -13,21 +13,21 @@ import {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  @ViewChildren('sections') sections: QueryList<ElementRef>
+  @ViewChildren('sections') sections: QueryList<ElementRef>;
   @ViewChild('bar', { static: false }) bar: ElementRef;
 
   progress: any = [];
-  // elems = [];
+  sectionLength = 3;
   pages: any = [];
   barLinkWidth: number = 0;
+  Math: any;
 
-  constructor(private _elements: ElementRef, private _cd: ChangeDetectorRef) {}
+  constructor(private _elements: ElementRef, private _cd: ChangeDetectorRef) {
+    this.Math = Math;
+  }
 
   ngAfterViewInit() {
     this._cd.detectChanges();
-    this.sections.forEach((val) => {
-      console.log(val.nativeElement)
-    })
     this.progress = Array.prototype.slice.call(
       document.querySelectorAll('#percent > div')
     );
@@ -38,14 +38,15 @@ export class AppComponent {
     );
   }
 
-  navigate(sectionIndex:number){
+  navigate(sectionIndex: number) {
     let arr = Array.from(this.sections);
     arr.forEach((val, i) => {
-      arr[sectionIndex].nativeElement.classList.remove('show-page')
-    })
+      arr[sectionIndex].nativeElement.classList.remove('show-page');
+    });
     arr[0].nativeElement.classList.add('displayNone');
     arr[sectionIndex].nativeElement.classList.add('show-page');
-    this.bar.nativeElement.style.width = this.barLinkWidth * (sectionIndex + 1) + '%'
+    this.bar.nativeElement.style.width =
+      this.barLinkWidth * (sectionIndex + 1) + '%';
   }
 
   whereYouAt() {
