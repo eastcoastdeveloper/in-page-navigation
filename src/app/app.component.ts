@@ -17,12 +17,11 @@ export class AppComponent {
   @ViewChild('btnGroup', { static: false }) btnGroup: ElementRef;
   @ViewChild('bar', { static: false }) bar: ElementRef;
 
-  progress: any = [];
-
   // SET TO ANY AMOUNT!
   sectionLength = 3;
   
   barLinkWidth: number = 0;
+  progress: any = [];
   Math: any;
 
   constructor(
