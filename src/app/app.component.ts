@@ -18,7 +18,10 @@ export class AppComponent {
   @ViewChild('bar', { static: false }) bar: ElementRef;
 
   progress: any = [];
+
+  // SET TO ANY AMOUNT!
   sectionLength = 5;
+  
   barLinkWidth: number = 0;
   Math: any;
 
