@@ -1,56 +1,50 @@
-import { DOCUMENT } from '@angular/common';
 import {
   Component,
   ElementRef,
-  Inject,
-  OnInit,
-  Renderer2,
+  QueryList,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  @ViewChild('s1', { static: false }) s1: ElementRef;
-  @ViewChild('s2', { static: false }) s2: ElementRef;
-  @ViewChild('s3', { static: false }) s3: ElementRef;
+  @ViewChildren('sections') sections: QueryList<ElementRef>
   @ViewChild('bar', { static: false }) bar: ElementRef;
 
   progress: any = [];
+  // elems = [];
   pages: any = [];
   barLinkWidth: number = 0;
 
   constructor(private _elements: ElementRef) {}
 
   ngAfterViewInit() {
-    let elems = Array.from(this._elements.nativeElement.querySelectorAll('section'));
-    console.log(elems);
+    this.sections.forEach((val) => {
+      console.log(val.nativeElement)
+    })
+    // this.elems = Array.from(this._elements.nativeElement.querySelectorAll('section > div'));
     this.progress = Array.prototype.slice.call(
       document.querySelectorAll('#percent > div')
     );
-    this.pages = [
-      this.s1.nativeElement,
-      this.s2.nativeElement,
-      this.s3.nativeElement,
-    ];
-    this.barLinkWidth = 100 / this.pages.length;
+    this.barLinkWidth = 100 / this.sections.length;
     this.bar.nativeElement.setAttribute(
       'style',
       'width:' + this.barLinkWidth + '%'
     );
   }
 
-  navigate(page) {
-    for (var i = 0; i < this.pages.length; i++) {
-      this.pages[i].classList.remove('show-page');
-    }
-    this.s1.nativeElement.classList.add('displayNone');
-    page.classList.add('show-page');
-    this.bar.nativeElement.style.width =
-      this.barLinkWidth * page.getAttribute('id').slice(1) + '%';
+  navigate(sectionIndex:number){
+    let arr = Array.from(this.sections);
+    arr.forEach((val, i) => {
+      arr[sectionIndex].nativeElement.classList.remove('show-page')
+    })
+    arr[0].nativeElement.classList.add('displayNone');
+    arr[sectionIndex].nativeElement.classList.add('show-page');
+    this.bar.nativeElement.style.width = this.barLinkWidth * arr[sectionIndex].nativeElement.getAttribute('id').slice(1) + '%'
   }
 
   whereYouAt() {

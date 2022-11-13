@@ -10,13 +10,13 @@
 
 <div id="module-name">
   <section>
-    <div id="s1">Section 1</div>
+    <div #sections>Section 1</div>
   </section>
   <section>
-    <div id="s2">Section 2</div>
+    <div #sections>Section 2</div>
   </section>
   <section>
-    <div id="s3">Section 3</div>
+    <div #sections>Section 3</div>
   </section>
   <div id="indicator" #bar></div>
   <div id="percent">
@@ -25,8 +25,8 @@
     <div>100%</div>
   </div>
   <div class="btn-group" (mouseover)="whereYouAt()" (mouseout)="revert()">
-    <button (click)="navigate(s1)">Section 1</button>
-    <button (click)="navigate(s2)">Section 2</button>
-    <button (click)="navigate(s3)">Section 3</button>
+    <button (click)="navigate(0)">Section 1</button>
+    <button (click)="navigate(1)">Section 2</button>
+    <button (click)="navigate(2)">Section 3</button>
   </div>
 </div>
