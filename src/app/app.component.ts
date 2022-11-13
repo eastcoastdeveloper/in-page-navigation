@@ -1,8 +1,11 @@
+import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Inject,
   QueryList,
+  Renderer2,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
@@ -14,6 +17,7 @@ import {
 })
 export class AppComponent {
   @ViewChildren('sections') sections: QueryList<ElementRef>;
+  @ViewChild('btnGroup', { static: false }) btnGroup: ElementRef;
   @ViewChild('bar', { static: false }) bar: ElementRef;
 
   progress: any = [];
@@ -21,7 +25,12 @@ export class AppComponent {
   barLinkWidth: number = 0;
   Math: any;
 
-  constructor(private _elements: ElementRef, private _cd: ChangeDetectorRef) {
+  constructor(
+    private _elements: ElementRef,
+    private _cd: ChangeDetectorRef,
+    private _renderer: Renderer2,
+    @Inject(DOCUMENT) private _document: Document
+  ) {
     this.Math = Math;
   }
 
@@ -34,6 +43,11 @@ export class AppComponent {
     this.bar.nativeElement.setAttribute(
       'style',
       'width:' + this.barLinkWidth + '%'
+    );
+    this._renderer.setStyle(
+      this.btnGroup.nativeElement,
+      'grid-template-columns',
+      this.sectionLength
     );
   }
 

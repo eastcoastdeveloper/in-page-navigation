@@ -18,7 +18,7 @@
       {{ Math.round((100 / sectionLength) * (i + 1)) + '%' }}
     </div>
   </div>
-  <div class="btn-group" (mouseover)="whereYouAt()" (mouseout)="revert()">
+  <div class="btn-group" #btnGroup (mouseover)="whereYouAt()" (mouseout)="revert()">
     <button
       *ngFor="let btn of [].constructor(sectionLength); let i = index"
       (click)="navigate(i)"
