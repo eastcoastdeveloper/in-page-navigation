@@ -2,13 +2,13 @@ html,
 body {
   margin: 0;
   width: 100%;
-  height: 100%;
+  height: 500px;
 }
 
 #module-name {
   height: calc(100% - 60px);
   border-radius: 6px;
-  max-width: 500px;
+  max-width: 750px;
   margin: 10px auto 0 auto;
   position: relative;
   overflow: hidden;
