@@ -2,7 +2,6 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  OnInit,
   QueryList,
   ViewChild,
   ViewChildren
