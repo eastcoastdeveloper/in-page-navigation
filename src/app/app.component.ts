@@ -2,9 +2,10 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  OnInit,
   QueryList,
   ViewChild,
-  ViewChildren,
+  ViewChildren
 } from '@angular/core';
 
 @Component({
@@ -13,6 +14,11 @@ import {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  markup: string;
+  typescript: string;
+  style: string;
+
+  @ViewChildren('percentages') percentages: QueryList<ElementRef>;
   @ViewChildren('sections') sections: QueryList<ElementRef>;
   @ViewChild('btnGroup', { static: false }) btnGroup: ElementRef;
   @ViewChild('bar', { static: false }) bar: ElementRef;
@@ -22,18 +28,17 @@ export class AppComponent {
 
   barLinkWidth = 0;
   currentSection = 0;
-  progress: any = [];
   Math: any;
 
-  constructor(private _cd: ChangeDetectorRef) {
+  constructor(
+    private _cd: ChangeDetectorRef,
+  ) {
     this.Math = Math;
   }
 
   ngAfterViewInit() {
     this._cd.detectChanges();
-    this.progress = Array.prototype.slice.call(
-      document.querySelectorAll('#percent > div')
-    );
+
     this.barLinkWidth = 100 / this.sections.length;
     this.bar.nativeElement.setAttribute(
       'style',
@@ -49,17 +54,17 @@ export class AppComponent {
       this.barLinkWidth * (sectionIndex + 1) + '%';
   }
 
-  whereYouAt() {
+  showProgressBar() {
     this.bar.nativeElement.style.height = '22px';
-    for (var i = 0; i < this.progress.length; i++) {
-      this.progress[i].style.opacity = 1;
-    }
+    this.percentages.forEach((val) => {
+      val.nativeElement.style.opacity = 1;
+    });
   }
 
-  revert() {
+  hideProgressBar() {
     this.bar.nativeElement.style.height = '3px';
-    for (var i = 0; i < this.progress.length; i++) {
-      this.progress[i].style.opacity = 0;
-    }
+    this.percentages.forEach((val) => {
+      val.nativeElement.style.opacity = 0;
+    });
   }
 }
