@@ -14,7 +14,7 @@
   [ngClass]="{ 'display-none': currentSection != i }"
 >
   <div #sections>
-    {{ 'Section ' + (i + 1) }}
+    {{ 'Section ' + (currentSection + 1) }}
     <div *ngIf="currentSection === 0" class="section-content">
       <div class="group">
         <label for="name">First Name:</label>
