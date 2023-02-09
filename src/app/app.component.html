@@ -10,8 +10,7 @@
 
 <div id="module-name" class="element-shadow element-margin-top">
 <section
-  *ngFor="let item of [].constructor(sectionLength); let i = index"
-  [ngClass]="{ 'display-none': currentSection != i }"
+  *ngFor="let item of [].constructor(sectionLength)"
 >
   <div #sections>
     {{ 'Section ' + (currentSection + 1) }}
