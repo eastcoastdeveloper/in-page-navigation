@@ -1,9 +1,10 @@
 #module-name {
   height: 300px;
-  border-radius: 6px;
   position: relative;
   font-family: sans-serif;
   overflow: hidden;
+  max-width: 500px;
+  margin: 0 auto;
 
   #indicator {
     background-color: #313b3f;
@@ -15,9 +16,6 @@
 
   section {
     height: 100%;
-    background-color: #FFFFFF;
-    border: 1px solid #313b3f;
-    border-radius: 6px;
 
     > div {
       font-size: 1.5em;
