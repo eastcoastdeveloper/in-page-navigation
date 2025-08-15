@@ -31,13 +31,3 @@ header {
   display: inline-block;
   font-weight: lighter;
 }
-header a {
-  text-decoration: none;
-  position: absolute;
-  right: 20px;
-  font-size: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  float: right;
-  color: #d9a74a;
-}
