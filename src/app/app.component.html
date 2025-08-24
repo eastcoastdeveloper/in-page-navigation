@@ -2,6 +2,7 @@
   <section *ngFor="let item of [].constructor(sectionLength)">
     <div #sections>
       {{ 'Section ' + (currentSection + 1) }}
+      
       <div *ngIf="currentSection === 0" class="section-content">
         <div class="group">
           <label for="name">First Name:</label>
@@ -33,17 +34,18 @@
       </div>
 
       <div *ngIf="currentSection === 2" class="section-content">Results...</div>
+      
     </div>
   </section>
+
   <div id="indicator" #bar></div>
+  
   <div id="percent">
-    <div
-      #percentages
-      *ngFor="let percent of [].constructor(sectionLength); let i = index"
-    >
+    <div #percentages *ngFor="let percent of [].constructor(sectionLength); let i = index">
       {{ Math.round((100 / sectionLength) * (i + 1)) + '%' }}
     </div>
   </div>
+
   <div
     class="btn-group"
     #btnGroup

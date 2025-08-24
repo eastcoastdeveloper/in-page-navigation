@@ -4,7 +4,7 @@ import {
   ElementRef,
   QueryList,
   ViewChild,
-  ViewChildren
+  ViewChildren,
 } from '@angular/core';
 
 @Component({
@@ -29,9 +29,7 @@ export class AppComponent {
   currentSection = 0;
   Math: any;
 
-  constructor(
-    private _cd: ChangeDetectorRef,
-  ) {
+  constructor(private _cd: ChangeDetectorRef) {
     this.Math = Math;
   }
 
@@ -39,10 +37,7 @@ export class AppComponent {
     this._cd.detectChanges();
 
     this.barLinkWidth = 100 / this.sections.length;
-    this.bar.nativeElement.setAttribute(
-      'style',
-      'width:' + this.barLinkWidth + '%'
-    );
+    this.bar.nativeElement.setAttribute('style','width:' + this.barLinkWidth + '%');
     this.btnGroup.nativeElement.style.gridTemplateColumns =
       'repeat(' + this.sectionLength + ', auto)';
   }
